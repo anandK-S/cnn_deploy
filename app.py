@@ -5,7 +5,7 @@ from PIL import Image
 import requests
 import os
 
-st.title("CNN Image Classification")
+st.title("CNN Cat and Dog Image Classification")
 
 MODEL_URL = "https://huggingface.co/Anandkumar14065/cnn-model/resolve/main/cnn_model.keras"
 MODEL_PATH = "cnn_model.keras"
@@ -37,3 +37,4 @@ if uploaded_file:
 
     st.image(image, caption="Uploaded Image", use_column_width=True)
     st.success(f"Prediction: {predicted_class}")
+
