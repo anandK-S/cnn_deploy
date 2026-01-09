@@ -22,7 +22,8 @@ def load_model():
 model = load_model()
 
 # ⚠️ Update class names exactly as training
-class_names = ["class1", "class2", "class3"]
+class_names = ["Cat", "Dog", "not a cat or dog"]
+
 
 uploaded_file = st.file_uploader("Upload an image", type=["jpg","png","jpeg"])
 
