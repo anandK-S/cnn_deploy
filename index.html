@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Krishna ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
+    background-size:400% 400%;
+    animation:gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.85);   /* MORE SOLID */
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    width:90%;
+    max-width:420px;
+    color:#333;   /* DARK TEXT */
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:42px;
+    margin-bottom:15px;
+    color:#ff2e63;
+}
+
+#typeText{
+    font-size:17px;
+    min-height:80px;
+    margin-bottom:25px;
+    border-right:2px solid #ff2e63;
+    white-space:pre-line;
+    animation:blink 0.7s infinite;
+}
+
+@keyframes blink{
+    0%{border-color:#ff2e63;}
+    50%{border-color:transparent;}
+    100%{border-color:#ff2e63;}
+}
+
+.buttons{
+    position:relative;
+    height:60px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    position:absolute;
+}
+
+#yes{
+    background:#ff2e63;
+    color:white;
+    left:10%;
+}
+
+#no{
+    background:#ddd;
+    color:#333;
+    right:10%;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    bottom:-10px;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0) scale(0.5); opacity:1;}
+    100%{transform:translateY(-100vh) scale(1.5); opacity:0;}
+}
+
+/* Final Love Screen */
+#finalScreen{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#ff2e63,#ff758c);
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    color:white;
+    font-family:'Dancing Script',cursive;
+    font-size:35px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Krishna ❤️</h1>
+    <div id="typeText"></div>
+
+    <div class="buttons">
+        <button id="yes">Maan Jao ❤️</button>
+        <button id="no">Nahi 😒</button>
+    </div>
+</div>
+
+<div id="finalScreen">
+    🥰 Krishna Maan Gayi ❤️  
+    <br><br>
+    Mujhe pata tha tum maan jaogi ✨  
+    <br>
+    💕
+</div>
+
+<script>
+
+/* Typewriter Text */
+let text="Krishna...\nSach kahu toh tum mere liye bohot value rakhti ho ❤️\nTabhi main itne efforts karta hoon tumhare liye.\nAgar kabhi galti hui ho toh maaf kar dena 🥺\nTum aise normally baat karo, vo mujhse nahi hoga 💕";
+
+let i=0;
+function typeWriter(){
+    if(i<text.length){
+        document.getElementById("typeText").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typeWriter,35);
+    }
+}
+typeWriter();
+
+/* Button Logic */
+let yes=document.getElementById("yes");
+let no=document.getElementById("no");
+let finalScreen=document.getElementById("finalScreen");
+
+let scale=1;
+
+no.addEventListener("mouseover",()=>{
+    no.style.top=Math.random()*40+"px";
+    no.style.right=Math.random()*10+"%";
+});
+
+no.addEventListener("click",()=>{
+    scale+=0.2;
+    yes.style.transform="scale("+scale+")";
+    if(scale>2){
+        no.style.display="none";
+    }
+});
+
+yes.addEventListener("click",()=>{
+    finalScreen.style.display="flex";
+});
+
+/* Floating Hearts */
+setInterval(()=>{
+    let heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{ heart.remove(); },6000);
+},400);
+
+</script>
+
+</body>
+</html>
